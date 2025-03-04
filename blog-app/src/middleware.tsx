@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
-    const userToken = req.cookies.get("user-token");
+    const userToken = req.cookies.get("user-token")?.value;
     console.log(userToken);
     
 

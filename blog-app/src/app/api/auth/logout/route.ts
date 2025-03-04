@@ -2,18 +2,21 @@ import axios from "@/lib/axios";
 import { AxiosError } from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
     try {
-        const {login, password} = await req.json();
-        const {data} = await axios.post("/users/login", {login, password});
-        console.log(data);
+        const userToken = req.cookies.get("user-token")?.value;
+       await axios.get("/users/logout", {
+        headers: {
+            "user-token": userToken,
+        }
+       });
         
-        const response = NextResponse.json(data);
-        response.cookies.set("user-token", data["user-token"], {
+        const response = NextResponse.json({message: "Logout succsess !"});
+        response.cookies.set("user-token", "", {
             httpOnly: true,
             secure: process.env.NODE_ENV == "production",
             path: "/",
-            maxAge: 60 * 60 * 24,
+            maxAge: 0,
         });
         return response
     } catch (err) {

@@ -1,9 +1,9 @@
 "use cliet";
-// import { login } from "@/redux/userSlice";
-import axios from "axios";
+import { login } from "@/redux/userSlice";
+import axios, { AxiosError } from "axios";
 import { Field, Form, Formik, FormikHelpers, FormikProps } from "formik";
 import { useRouter } from "next/navigation";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 
@@ -20,14 +20,15 @@ interface ILoginForm {
 
 export default function LogForm() {
   const initialValus: ILoginForm = { login: "", password: "" };
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const router = useRouter()
   const onLogin = async (
     values: ILoginForm,
     action: FormikHelpers<ILoginForm>
   ) => { 
     try {
-    const {data} = await axios.post("https://prizedgirl-us.backendless.app/api/users/login",values)
+    const {data} = await axios.post("/api/auth/login",values)
+    dispatch(login(data));
     console.log(data);
     console.log(data["user-token"]);
     toast.success("Login Sucsess")
@@ -35,9 +36,11 @@ export default function LogForm() {
     router.push("/home")
     
   } catch (err) {
+    if (err instanceof AxiosError){
+      toast.error(err.response?.data?.error.message || "login Failed")
+    }
     console.log(err);
-    toast.error(err as string)
-    
+    //belajar cara dapat error di console log error
   }
 
   };
