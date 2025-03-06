@@ -49,10 +49,10 @@ export default function RegForm() {
           const { errors, touched } = props;
           return (
             <Form>
-              <div className="flex flex-col bg-white dark:bg-gray-300 rounded-lg">
-                <div className="flex flex-col h-[300px] w-[500px] p-4 text-sm bg-white dark:bg-gray-300 gap-4 rounded-lg">
+              <div className="flex flex-col bg-white dark:bg-gray-300 rounded-lg justify-center items-center">
+                <div className="flex flex-col p-4 text-sm bg-white dark:bg-gray-300 gap-4 rounded-lg">
                 <p className="font-bold text-[23px]">Sign Up Now</p>
-                <div className="h-[50px] w-[full]">
+                <div className="w-[full]">
                   <p className="text-[15px]">Email</p>
                   <Field
                     name="email"
@@ -67,7 +67,7 @@ export default function RegForm() {
                   ) : null}
                   </div>
                   </div>
-                  <div className="h-[50px] w-[full]">
+                  <div className="w-[full]">
                     <p>Name</p>
                   <Field 
                     name="name" 
@@ -79,7 +79,7 @@ export default function RegForm() {
                   ) : null}
                   </div>
                   </div>
-                  <div className="h-[50px] w-[full] bg-white">
+                  <div className="w-[full] bg-white">
                     <p>Password</p>
                   <Field name="password" placeholder="Add a new password" />
                   <div className="bg-white">
@@ -92,7 +92,7 @@ export default function RegForm() {
                   </div>
                   <div className="flex">
                   <button type="submit" className="p-2 text-sm text-center">
-                    <div className="bg-black text-white w-[55px] h-7 rounded-md">  
+                    <div className="bg-amber-400 text-white w-[55px] h-7 rounded-md">  
                     sign up
                     </div>
                   </button>

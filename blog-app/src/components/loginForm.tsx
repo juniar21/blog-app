@@ -56,8 +56,8 @@ export default function LogForm() {
           const { errors, touched } = props;
           return (
             <Form>
-              <div className="flex dark:bg-gray-300 rounded-lg">
-                <div className="flex flex-col h-[250px] p-4 text-sm bg-white dark:bg-gray-300 gap-4">
+              <div className="flex dark:bg-gray-300 ">
+                <div className="flex flex-col h-[250px] p-4 text-sm bg-white dark:bg-gray-300 gap-4 rounded-lg">
                   <p className="font-bold text-[23px]">Sign In Now</p>
                   <div className="h-[50px] w-[full]">
                     <p className="text-[15px]">Email</p>

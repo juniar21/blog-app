@@ -1,14 +1,46 @@
 import Navbar from "@/components/navbar";
-import Image from "next/image";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// import Image from "next/image";
+// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { IBlog } from "../typeRegister";
+import Wrapper from "@/components/wrapper";
+import Card from "@/components/card";
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch(
+    "https://prizedgirl-us.backendless.app/api/data/Blogs?loadRelations=author"
+  );
+  const data:IBlog[] = await res.json();
   return (
     <div>
       <div>
         <Navbar />
       </div>
-      <div className="flex flex-col w-full text-center items-center mt-8 gap-2">
+      <div>
+      <Wrapper>
+        <div className="grid w-full p-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2">
+          {data.map((item, idx) => {
+            return (
+              <div key={idx}>
+                <Card
+                  category={item.category}
+                  title={item.title} 
+                  thumbnail={item.thumbnail}
+                  name={item.author.name}
+                  email={item.author.email}
+                  objectId={item.objectId}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </Wrapper>
+      </div>
+    </div>
+  );
+}
+
+
+{/* <div className="flex flex-col w-full text-center items-center mt-8 gap-2">
         <p className="mr-[550px] text-sm mt-5">Robusta Coffee</p>
         <h1 className="mr-[40px] font-serif font-bold text-4xl mt-3">
           Odio Utsem Nulla Pharetra Diam
@@ -41,7 +73,9 @@ export default function Home() {
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <p className="text-[12px] font-bold font-sans">JOHN DOE / ON APRIL, 2025</p>
+          <p className="text-[12px] font-bold font-sans">
+            JOHN DOE / ON APRIL, 2025
+          </p>
         </div>
       </div>
       <div className="flex flex-col w-full text-center items-center mt-8 gap-2">
@@ -77,7 +111,9 @@ export default function Home() {
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <p className="text-[12px] font-bold font-sans">JOHN DOE / ON APRIL, 2025</p>
+          <p className="text-[12px] font-bold font-sans">
+            JOHN DOE / ON APRIL, 2025
+          </p>
         </div>
       </div>
       <div className="flex flex-col w-full text-center items-center mt-8 gap-2">
@@ -113,9 +149,8 @@ export default function Home() {
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <p className="text-[12px] font-bold font-sans">JOHN DOE / ON APRIL, 2025</p>
+          <p className="text-[12px] font-bold font-sans">
+            JOHN DOE / ON APRIL, 2025
+          </p>
         </div>
-      </div>
-    </div>
-  );
-}
+      </div> */}

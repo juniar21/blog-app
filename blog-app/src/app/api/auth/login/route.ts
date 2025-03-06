@@ -23,5 +23,6 @@ export async function POST(req: NextRequest) {
             {status: err.response?.status || 401}
         );
        }
+       return
     }
 }
