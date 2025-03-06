@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import { IoArrowBackOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
+import Share from "./_component/share";
 
 export async function generateMetadata({
   params,
@@ -44,6 +45,9 @@ export default async function Page({
               </Link>
               <div className="mt-4">
                 <h1 className="text-[13px] font-bold">BAGIKAN</h1>
+              </div>
+              <div>
+                <Share ObjectId={data.objectId} />
               </div>
             </div>
             <div className="sm:9/12">
