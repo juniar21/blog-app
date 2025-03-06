@@ -14,8 +14,8 @@ export default function Login() {
       <div className="absolute z-10 flex max-xl:hidden max-sm:w-full justify-center items-center ml-[350px] mt-[350px]">
         <Image src={"/login1.png"} alt="error" height={300} width={400} />
       </div>
-      <div className="bg-amber-400 h-screen relative flex justify-center items-center">
-        <div className="absolute flex justify-center items-center">
+      <div className="bg-amber-400 h-screen relative flex justify-center items-center mt-[-10px]">
+        <div className="flex justify-center items-center">
           <LogForm />
         </div>
       </div>
