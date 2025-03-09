@@ -51,16 +51,17 @@ export default function Navbar() {
                   </div>
                 </button>
                 {menu && (
-                  <div className="block absolute z-10 mt-[35px] border border-gray-500 w-[100px] rounded-sm md:w-[150px] transition-all delay-300 duration-5000">
-                    <div className="block text-center hover:text-gray-700 hover:scale-105">
+                  <div className="block absolute z-10 mt-[35px] border bg-amber-500  border-gray-500 w-[130px] rounded-sm md:w-[150px] transition-all delay-300 duration-5000">
+                    <div className="block text-center hover:text-gray-700 hover:scale-105 text-[20px]">
                       <Link href={"/home"}>Home</Link>
-                      <hr />
                     </div>
-                    <div className="block text-center hover:text-gray-700 hover:scale-105">
+                      <hr />
+                    <div className="block text-center hover:text-gray-700 hover:scale-105 text-[20px]">
                       <Link href={"/dashboard"}>Dashboard</Link>
-                      <hr />
+                      
                     </div>
-                    <div className="block text-center text-red-500 hover:text-red-700 hover:scale-105">
+                    <hr />
+                    <div className="block text-center text-red-500 hover:text-red-700 hover:scale-105 text-[20px]">
                       <button onClick={onLogout}>logout</button>
                     </div>
                   </div>

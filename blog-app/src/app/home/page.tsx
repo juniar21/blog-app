@@ -4,6 +4,11 @@ import Navbar from "@/components/navbar";
 import { IBlog } from "../typeRegister";
 import Wrapper from "@/components/wrapper";
 import Card from "@/components/card";
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Home",
+    description: "Page Ho,e",
+  };
 
 export default async function Home() {
   const res = await fetch(
